@@ -158,7 +158,7 @@ const InvoiceForm = () => {
 
   const handleAddInvoice = () => {
     if (isEdit) {
-      dispatch(updateInvoice({ id: params.id, updatedInvoice: formData }));
+      dispatch(updateInvoice({ id: parseInt(params.id), updatedInvoice: formData }));
       alert("Invoice updated successfuly 🥳");
     } else if (isCopy) {
       dispatch(addInvoice({ id: generateRandomId(), ...formData }));

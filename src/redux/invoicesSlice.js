@@ -5,27 +5,23 @@ const invoicesSlice = createSlice({
   initialState: [],
   reducers: {
     addInvoice: (state, action) => {
+      console.log(`add ${action.payload.id}`);
       state.push(action.payload);
     },
     deleteInvoice: (state, action) => {
       return state.filter((invoice) => invoice.id !== action.payload);
     },
-    updateInvoice: (state, action) => {
-      const index = state.findIndex(
-        (invoice) => invoice.id === action.payload.id
-      );
-      if (index !== -1) {
-        state[index] = action.payload.updatedInvoice;
-      }
-    },
+    updateInvoice: (state, action) =>
+      state.map((invoice) =>
+        invoice.id === action.payload.id
+          ? action.payload.updatedInvoice
+          : invoice
+      ),
   },
 });
 
-export const {
-  addInvoice,
-  deleteInvoice,
-  updateInvoice,
-} = invoicesSlice.actions;
+export const { addInvoice, deleteInvoice, updateInvoice } =
+  invoicesSlice.actions;
 
 export const selectInvoiceList = (state) => state.invoices;
 
