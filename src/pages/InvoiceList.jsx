@@ -3,6 +3,7 @@ import { Button, Card, Col, Row, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BiSolidPencil, BiTrash } from "react-icons/bi";
 import { BsEyeFill } from "react-icons/bs";
+import { MdAddCircle } from "react-icons/md";
 import InvoiceModal from "../components/InvoiceModal";
 import { useNavigate } from "react-router-dom";
 import { useInvoiceListData } from "../redux/hooks";
@@ -74,6 +75,7 @@ const InvoiceList = () => {
                   {invoiceList.map((invoice) => (
                     <InvoiceRow
                       key={invoice.id}
+                      id={invoice.id}
                       invoice={invoice}
                       navigate={navigate}
                     />
@@ -88,8 +90,9 @@ const InvoiceList = () => {
   );
 };
 
-const InvoiceRow = ({ invoice, navigate }) => {
+const InvoiceRow = ({id, invoice, navigate }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [ checkedInvoices, setCheckedInvoices ] = useState([]);
   const dispatch = useDispatch();
 
   const handleDeleteClick = (invoiceId) => {
@@ -107,6 +110,11 @@ const InvoiceRow = ({ invoice, navigate }) => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const bulkEditHandler = (event) => {
+    event.preventDefault();
+
   };
 
   return (
@@ -136,6 +144,13 @@ const InvoiceRow = ({ invoice, navigate }) => {
         <Button variant="secondary" onClick={openModal}>
           <div className="d-flex align-items-center justify-content-center gap-2">
             <BsEyeFill />
+          </div>
+        </Button>
+      </td>
+      <td style={{ width: "5%" }}>
+        <Button variant="success" onClick={openModal}>
+          <div className="d-flex align-items-center justify-content-center gap-2">
+            <MdAddCircle />
           </div>
         </Button>
       </td>
