@@ -1,0 +1,7 @@
+.heading {
+    text-align: center;
+    margin: 20px;
+    color: darkslategrey;
+    font-size: 4rem;
+    text-shadow: 2px 4px 2px lightsalmon, -2px -4px 2px lightsalmon, 2px -4px 2px lightsalmon, -2px 4px 2px lightsalmon;
+}

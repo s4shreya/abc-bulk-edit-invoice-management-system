@@ -1,0 +1,21 @@
+.table {
+  margin: auto;
+  border: 5px solid rgb(247, 67, 79);
+  border-radius: 20px;
+  border-spacing: 20px;
+}
+
+.table th,
+td {
+  border: 3px solid purple;
+  padding: 20px;
+  font-size: 1.5rem;
+}
+
+.table th {
+    color: teal;
+}
+
+.table td {
+    color: green;
+}
